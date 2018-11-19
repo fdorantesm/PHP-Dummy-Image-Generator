@@ -18,11 +18,17 @@
 /**
  * Handle the “size” parameter.
  */
+
+$path = $_SERVER["REQUEST_URI"];
+$segments = array_splice((explode("/", $path)), 1);
+
+
 $size = '640x480';
 if (isset($_GET['size'])) {
     $size = $_GET['size'];
 }
-list($imgWidth, $imgHeight) = explode('x', $size . 'x');
+
+list($imgWidth, $imgHeight) = $segments;
 if ($imgHeight === '') {
     $imgHeight = $imgWidth;
 }
